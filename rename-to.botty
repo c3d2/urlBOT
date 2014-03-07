@@ -1,0 +1,5 @@
+[urlBOT]
+username = User@server.tld/RESOURCE
+password = secret
+room = muc@chat.server.tld
+name = N1ckn4me

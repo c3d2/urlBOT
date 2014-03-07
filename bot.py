@@ -6,9 +6,8 @@ import getpass
 import re
 import urllib2
 from BeautifulSoup import BeautifulSoup
-from mechanize import Browser
 from optparse import OptionParser
-
+import ConfigParser
 import sleekxmpp
 
 sys.setdefaultencoding('utf8')
@@ -61,7 +60,14 @@ class MUCBot(sleekxmpp.ClientXMPP):
 
     logging.basicConfig(level=logging.INFO, format='%(levelname)-8s %(message)s')
 
-xmpp = MUCBot("USER@jabber.c3d2.de/versionNULLpunktEINS", "PASSWORD", "c3d2@chat.c3d2.de", "2 BetaBOT")
+config = ConfigParser.ConfigParser()
+config.read("./.botty")
+username = config.get('urlBOT', 'username')
+password = config.get('urlBOT', 'password')
+room = config.get('urlBOT', 'room')
+name = config.get('urlBOT', 'name')
+
+xmpp = MUCBot(username, password, room, name)
 xmpp.register_plugin('xep_0030') # Service Discovery
 xmpp.register_plugin('xep_0045') # Multi-User Chat
 xmpp.register_plugin('xep_0199') # XMPP Ping
