@@ -23,7 +23,6 @@ class MUCBot(sleekxmpp.ClientXMPP):
 
         self.add_event_handler("session_start", self.start)
         self.add_event_handler("groupchat_message", self.muc_message)
-        #self.add_event_handler("muc::%s::got_online" % self.room, self.muc_online)
 
 
     def start(self, event):
